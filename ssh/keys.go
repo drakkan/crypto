@@ -14,7 +14,6 @@ import (
 	"crypto/elliptic"
 	"crypto/md5"
 	"crypto/rsa"
-	"crypto/sha256"
 	"crypto/x509"
 	"encoding/asn1"
 	"encoding/base64"
@@ -25,6 +24,8 @@ import (
 	"io"
 	"math/big"
 	"strings"
+
+	"github.com/minio/sha256-simd"
 
 	"golang.org/x/crypto/ed25519"
 	"golang.org/x/crypto/ssh/internal/bcrypt_pbkdf"

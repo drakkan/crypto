@@ -13,8 +13,9 @@ import (
 	"sync"
 
 	_ "crypto/sha1"
-	_ "crypto/sha256"
 	_ "crypto/sha512"
+
+	_ "github.com/minio/sha256-simd"
 )
 
 // These are string constants in the SSH protocol.

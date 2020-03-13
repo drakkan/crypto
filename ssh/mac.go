@@ -9,8 +9,9 @@ package ssh
 import (
 	"crypto/hmac"
 	"crypto/sha1"
-	"crypto/sha256"
 	"hash"
+
+	"github.com/minio/sha256-simd"
 )
 
 type macMode struct {
