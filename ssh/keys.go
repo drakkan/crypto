@@ -14,7 +14,6 @@ import (
 	"crypto/elliptic"
 	"crypto/md5"
 	"crypto/rsa"
-	"crypto/sha256"
 	"crypto/x509"
 	"encoding/asn1"
 	"encoding/base64"
@@ -874,7 +873,7 @@ func (k *skEd25519PublicKey) Verify(data []byte, sig *Signature) error {
 		return fmt.Errorf("invalid size %d for Ed25519 public key", l)
 	}
 
-	h := sha256.New()
+	h := sha256New()
 	h.Write([]byte(k.application))
 	appDigest := h.Sum(nil)
 
@@ -1468,7 +1467,7 @@ func FingerprintLegacyMD5(pubKey PublicKey) string {
 // https://www.openssh.com/txt/release-6.8
 // https://tools.ietf.org/html/rfc4648#section-3.2 (unpadded base64 encoding)
 func FingerprintSHA256(pubKey PublicKey) string {
-	sha256sum := sha256.Sum256(pubKey.Marshal())
+	sha256sum := sha256Sum256(pubKey.Marshal())
 	hash := base64.RawStdEncoding.EncodeToString(sha256sum[:])
 	return "SHA256:" + hash
 }
